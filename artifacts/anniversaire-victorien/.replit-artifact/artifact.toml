@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Carnet Secret — Anniversaire Victorien"
+version = "1.0.0"
+id = "artifacts/anniversaire-victorien"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22251
+
+[services.development]
+run = "pnpm --filter @workspace/anniversaire-victorien run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/anniversaire-victorien", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/anniversaire-victorien/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22251"
+BASE_PATH = "/"

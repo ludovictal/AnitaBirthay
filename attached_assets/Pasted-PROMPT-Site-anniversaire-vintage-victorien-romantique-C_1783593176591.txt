@@ -1,0 +1,31 @@
+PROMPT — Site anniversaire vintage victorien/romantique
+Crée un site web statique (HTML/CSS/JS pur, sans framework) célébrant l'anniversaire d'une femme, avec une direction artistique vintage victorienne romantique. Le rendu doit évoquer un carnet secret ou un boudoir d'époque numérisé — précieux, intime, un peu théâtral.
+Direction artistique
+
+Palette : tons sépia, ivoire, bordeaux profond, or vieilli, vert émeraude discret en accent
+Textures : papier vieilli légèrement grainé, effet parchemin, motifs de dentelle en filigrane sur les bordures et séparateurs
+Ornements : cadres ovales façon médaillon pour les photos, coins de page corné, sceaux de cire en éléments décoratifs, filets dorés fins
+Typographie : une serif ornementée/calligraphiée pour les titres (type script victorien), une serif classique lisible pour le corps de texte — contraste voulu entre élégance et lisibilité
+Curseur et micro-détails : envisager un curseur personnalisé discret (plume, clé) et des transitions douces façon page qui se tourne
+
+Structure — 6 onglets, chacun avec un ton distinct (mix demandé) :
+
+Accueil / Frontispice — ton solennel et élégant, portrait principal en médaillon, date et message d'ouverture
+Journal / Souvenirs — ton nostalgique et tendre, extraits de lettres, anecdotes rédigées comme des pages de journal intime
+Galerie photo — présentation façon album de famille, cadres ovales, légendes manuscrites
+Anecdotes / Clins d'œil — ton fun et pétillant, blagues internes, running gags, contrastant volontairement avec le classicisme visuel
+Lettre / Message final — ton sobre et émouvant, une déclaration ou lettre d'anniversaire mise en scène comme un vrai courrier scellé
+Vœux / Signature — clôture élégante, invitation à laisser un mot ou simple mise en scène finale
+
+Interactions et easter eggs
+
+Éléments cachés à découvrir : un sceau de cire cliquable qui révèle un message secret, une fleur séchée dans les marges qui déclenche une animation au survol, une horloge à l'ancienne dont les aiguilles cachent un indice, un tiroir de commode illustré qui s'ouvre pour révéler un souvenir bonus
+Transitions douces entre onglets (fondu, effet page tournée)
+Aucun élément ne doit gêner la navigation principale : les easter eggs sont des bonus discrets, pas des obstacles
+
+Contraintes techniques
+
+HTML/CSS/JS statique, aucune dépendance lourde
+Compatible hébergement Vercel
+Responsive (mobile et desktop)
+Performances soignées malgré les textures/ornements (SVG ou CSS plutôt que lourdes images de fond quand possible
