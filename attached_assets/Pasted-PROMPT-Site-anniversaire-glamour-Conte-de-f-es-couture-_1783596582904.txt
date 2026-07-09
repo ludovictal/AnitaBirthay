@@ -1,0 +1,37 @@
+PROMPT — Site anniversaire glamour "Conte de fées couture"
+Crée un site web statique (HTML/CSS/JS pur, sans framework) célébrant l'anniversaire d'une femme, avec une direction artistique conte de fées couture — un bal royal moderne, entre haute couture et magie, précieux et théâtral sans être enfantin.
+Priorité absolue : les photos sont le cœur du site
+
+La photographie doit dominer visuellement chaque page, pas seulement la galerie : un grand portrait en ouverture, des photos intégrées dans le fil des souvenirs et des anecdotes, pas uniquement reléguées à un onglet dédié
+Le texte vient en appui des images, jamais l'inverse — les blocs de texte doivent rester courts pour laisser respirer les visuels
+Les cadres à facettes façon pierres précieuses doivent être pensés comme de véritables mises en scène (tailles variées, quelques photos en grand format, effet mur de portraits), pas comme une simple grille uniforme
+Prévoir une hiérarchie claire : 1 photo "hero" par page maximum, entourée d'un écrin (vitrail, blason, halo doré) qui la sublime
+
+Direction artistique
+
+Palette : saphir profond en couleur dominante, rehaussé d'améthyste et d'émeraude en accents secondaires, filigranes dorés, blanc nacré pour les respirations
+Textures : effet vitrail subtil sur les séparateurs, velours et soie suggérés par des dégradés doux, dorures façon broderie de couture
+Ornements : blasons personnalisés en guise de repères visuels, motifs de tiare stylisés, cadres à facettes façon pierres précieuses pour les photos
+Typographie : une serif élégante et affirmée pour les titres (esprit haute couture), une serif fine et lisible pour le corps de texte
+Curseur et micro-détails : transitions façon "portail magique" entre les pages (fondu scintillant), légères particules dorées discrètes au chargement
+
+Structure — 6 onglets, à définir selon une logique de blason/tiare/vitraux plutôt que le langage des fleurs (à proposer et justifier lors de la conception), chaque onglet organisé autour d'une ou plusieurs photos plutôt que du texte
+Easter eggs — entièrement repensés pour cet univers
+
+Éléments cachés inspirés du monde du bal royal et de la couture : un blason à faire pivoter pour révéler un message, une tiare qui scintille et dévoile un secret au clic, un vitrail dont un fragment s'illumine pour cacher un indice, ou tout autre dispositif cohérent avec l'univers — à proposer avec créativité
+Transitions douces, aucun élément ne doit gêner la navigation principale
+
+Contenu
+
+Aucun texte définitif fourni : tous les textes (souvenirs, anecdotes, lettre finale, légendes) sont à rédiger comme des emplacements clairement identifiés [ ... ], prêts à être personnalisés ensuite
+Les emplacements photo doivent être nombreux et variés en taille/format, en cohérence avec la priorité photo ci-dessus
+
+Contraintes techniques
+
+HTML/CSS/JS statique, aucune dépendance lourde
+Compatible hébergement Vercel
+Responsive (mobile et desktop)
+Performances soignées malgré les ornements (SVG/CSS plutôt que lourdes images de fond)
+
+
+Veux-tu qu'on passe maintenant à la proposition des 6 thèmes d'onglets, ou directement à la construction du code ?
