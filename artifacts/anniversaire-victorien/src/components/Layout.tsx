@@ -2,6 +2,7 @@ import { Link, useLocation } from 'wouter';
 import { ReactNode } from 'react';
 import EasterEggs from './EasterEggs';
 import BirthdayFlourish from './BirthdayFlourish';
+import VintageOverlay from './VintageOverlay';
 
 const navItems = [
   { path: '/', label: 'Le Blason' },
@@ -18,6 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="min-h-[100dvh] relative overflow-hidden flex flex-col md:flex-row bg-background">
       <div className="particles-overlay"></div>
 
+      <VintageOverlay key={`vintage-${location}`} />
       {location !== '/' && <BirthdayFlourish key={location} />}
 
       {/* Navigation / Sidebar Couture */}

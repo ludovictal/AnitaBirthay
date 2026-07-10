@@ -58,6 +58,7 @@ body {
   filter: blur(0) brightness(1);
   transform: scale(1);
   transition: opacity 1000ms ease-out, filter 1000ms ease-out, transform 1000ms ease-out;
+  animation: vintage-develop 1.6s ease-out forwards;
 }
 .page-exit {
   opacity: 1;
@@ -69,6 +70,39 @@ body {
   transform: scale(1.02);
   transition: opacity 800ms ease-in, filter 800ms ease-in, transform 800ms ease-in;
 }
+
+/* A page "developing" like an old photograph: desaturated/sepia at first,
+   settling into full colour as it arrives. */
+@keyframes vintage-develop {
+  0% { filter: sepia(0.65) saturate(0.25) brightness(1.05) blur(8px); }
+  55% { filter: sepia(0.2) saturate(0.7) brightness(1.02) blur(0); }
+  100% { filter: sepia(0) saturate(1) brightness(1) blur(0); }
+}
+
+/* Royal velvet curtain transition */
+.curtain-panel {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, hsl(var(--sapphire-dark)) 0%, hsl(var(--sapphire)) 55%, hsl(var(--amethyst)) 100%);
+  box-shadow: inset -10px 0 30px rgba(0,0,0,0.5), inset 10px 0 30px rgba(0,0,0,0.5);
+  border-right: 2px solid hsl(var(--gold)/0.4);
+  transition: transform 800ms cubic-bezier(0.65, 0, 0.35, 1);
+  position: relative;
+}
+.curtain-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 10px, rgba(0,0,0,0.06) 10px 20px);
+}
+.curtain-right {
+  border-right: none;
+  border-left: 2px solid hsl(var(--gold)/0.4);
+}
+.curtain-left.curtain-closed { transform: translateX(0); }
+.curtain-left.curtain-open { transform: translateX(-100%); }
+.curtain-right.curtain-closed { transform: translateX(0); }
+.curtain-right.curtain-open { transform: translateX(100%); }
 
 /* Haute Couture Faceted Frame */
 .faceted-frame {
@@ -268,10 +302,98 @@ body {
   }
 }
 
+/* Vintage arrival overlay: continuous film grain + one-shot light leak */
+.grain-layer {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  animation: grain-flicker 0.4s steps(4) infinite;
+  mix-blend-mode: overlay;
+}
+@keyframes grain-flicker {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, 1%); }
+  50% { transform: translate(1%, -1%); }
+  75% { transform: translate(-1%, -1%); }
+  100% { transform: translate(1%, 1%); }
+}
+
+.light-leak {
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 70%;
+  height: 140%;
+  background: radial-gradient(ellipse at center, hsl(var(--gold)/0.35), transparent 65%);
+  filter: blur(20px);
+  opacity: 0;
+  animation: light-leak-sweep 1.6s ease-out forwards;
+}
+@keyframes light-leak-sweep {
+  0% { opacity: 0; transform: translate(-10%, -10%) rotate(-8deg); }
+  25% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(140%, 20%) rotate(-8deg); }
+}
+
+/* Countdown */
+.countdown-pulse {
+  animation: countdown-breathe 3.4s ease-in-out infinite;
+}
+@keyframes countdown-breathe {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 transparent); }
+  50% { transform: scale(1.03); filter: drop-shadow(0 0 14px rgba(255,215,0,0.35)); }
+}
+.countdown-digit {
+  animation: countdown-digit-flip 0.6s ease-out;
+}
+@keyframes countdown-digit-flip {
+  0% { opacity: 0; transform: translateY(-6px) scale(0.85); filter: brightness(2.2); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+}
+
+/* Confetti */
+.confetti-piece {
+  animation-name: confetti-fall;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes confetti-fall {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  10% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--drift), 260px) rotate(var(--rotate)); }
+}
+
+/* Crown drop on Home */
+.crown-drop {
+  animation: crown-drop-anim 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+@keyframes crown-drop-anim {
+  0% { opacity: 0; transform: translateY(-60px) scale(0.6) rotate(-8deg); filter: brightness(1); }
+  60% { opacity: 1; transform: translateY(4px) scale(1.05) rotate(2deg); filter: brightness(1.8) drop-shadow(0 0 16px rgba(255,215,0,0.8)); }
+  80% { transform: translateY(-2px) scale(0.98) rotate(0deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); filter: brightness(1) drop-shadow(0 0 6px rgba(255,215,0,0.4)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .flourish-banner,
-  .flourish-sparkle {
+  .flourish-sparkle,
+  .grain-layer,
+  .light-leak,
+  .countdown-pulse,
+  .countdown-digit,
+  .confetti-piece,
+  .crown-drop,
+  .curtain-panel,
+  .page-enter-active,
+  .page-exit-active {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

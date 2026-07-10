@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Countdown from '../components/Countdown';
 
 export default function Home() {
   const [crestRevealed, setCrestRevealed] = useState(false);
@@ -19,6 +20,25 @@ export default function Home() {
           </div>
           <h2 className="font-title text-5xl md:text-7xl text-pearl leading-tight drop-shadow-lg uppercase tracking-widest relative z-10">
             <span className="text-gradient-gold block text-3xl md:text-4xl mb-6 tracking-[0.3em] gold-glow">L'Anniversaire</span>
+            <svg
+              width="40"
+              height="30"
+              viewBox="0 0 64 48"
+              fill="none"
+              aria-hidden="true"
+              className="crown-drop mx-auto mb-2 block stroke-gold"
+              style={{ animationDelay: '0.4s' }}
+            >
+              <path
+                d="M6 40 L2 16 L18 28 L32 8 L46 28 L62 16 L58 40 Z"
+                fill="hsl(var(--gold)/0.15)"
+                strokeWidth="2.5"
+                strokeLinejoin="round"
+              />
+              <circle cx="2" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
+              <circle cx="32" cy="6" r="3" fill="hsl(var(--gold))" stroke="none" />
+              <circle cx="62" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
+            </svg>
             <span className="block text-2xl md:text-3xl text-pearl/80 mb-2">de la Princesse</span>
           </h2>
         </div>
@@ -43,6 +63,8 @@ export default function Home() {
         <p className="text-2xl leading-relaxed text-pearl/90 font-serif italic max-w-2xl mx-auto drop-shadow-md">
           Les portes du bal s'ouvrent sur une nuit qui t'appartient, parée de soie, de mystère et d'étoiles dorées.
         </p>
+
+        <Countdown />
       </div>
 
       {/* Royal Crest / Hero Portrait */}
