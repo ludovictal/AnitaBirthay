@@ -10,21 +10,9 @@ export interface Memory {
 const DEFAULT_MEMORIES: Memory[] = [
   {
     id: '1',
-    author: 'Juliette',
-    content: 'Je me souviens de cette fin d\'après-midi d\'octobre où nous nous sommes perdues dans les allées du jardin botanique. La lumière dorée filtrait à travers les feuilles d\'automne, et tu m\'as fait découvrir cette petite serre abandonnée. Ton émerveillement face à la beauté simple des choses a rendu cet instant inoubliable.',
-    date: 'Un jour d\'Automne'
-  },
-  {
-    id: '2',
-    author: 'Marguerite',
-    content: 'Impossible d\'oublier notre escapade imprévue vers la côte. Le vent salé qui décoiffait nos chignons, tes éclats de rire résonnant plus fort que le fracas des vagues contre les falaises. Tu as ce don si précieux de transformer chaque journée ordinaire en une véritable aventure romanesque.',
-    date: 'Au bord de la mer'
-  },
-  {
-    id: '3',
-    author: 'Sophie',
-    content: 'Ce fameux bal d\'hiver... Tu portais cette robe de velours qui sublimait ton teint de porcelaine. Quand la valse a commencé, tous les regards étaient tournés vers toi, mais tu n\'avais d\'yeux que pour les étoiles à travers la grande verrière. Une grâce naturelle, une élégance de l\'âme qui m\'inspire chaque jour.',
-    date: 'Le bal d\'Hiver'
+    author: 'Ton Favv',
+    content: '[Ecris ici ce jour parmi tant d\'autres qui a compte...]',
+    date: 'Un jour parmi tant d\'autres'
   }
 ];
 

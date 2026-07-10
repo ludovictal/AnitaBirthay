@@ -1,11 +1,10 @@
 import { Route, Switch, useLocation } from 'wouter';
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
-import Diary from './pages/Diary';
-import Gallery from './pages/Gallery';
-import Anecdotes from './pages/Anecdotes';
-import Letter from './pages/Letter';
-import Wishes from './pages/Wishes';
+import Vitraux from './pages/Vitraux';
+import Grimoire from './pages/Grimoire';
+import Lettre from './pages/Lettre';
+import Voeu from './pages/Voeu';
 
 function Router() {
   const [location] = useLocation();
@@ -18,7 +17,7 @@ function Router() {
       const timer = setTimeout(() => {
         setDisplayLocation(location);
         setTransitionStage('enter');
-      }, 600); // match page-exit-active duration
+      }, 800); // match page-exit-active duration
       return () => clearTimeout(timer);
     }
     return undefined;
@@ -26,21 +25,20 @@ function Router() {
 
   return (
     <div
-      className={`min-h-full transition-all duration-700 ${
+      className={`min-h-full transition-all duration-1000 ${
         transitionStage === 'enter' ? 'page-enter-active' : 'page-exit-active'
       }`}
     >
       <Switch location={displayLocation}>
         <Route path="/" component={Home} />
-        <Route path="/journal" component={Diary} />
-        <Route path="/galerie" component={Gallery} />
-        <Route path="/anecdotes" component={Anecdotes} />
-        <Route path="/lettre" component={Letter} />
-        <Route path="/voeux" component={Wishes} />
+        <Route path="/vitraux" component={Vitraux} />
+        <Route path="/grimoire" component={Grimoire} />
+        <Route path="/lettre" component={Lettre} />
+        <Route path="/voeu" component={Voeu} />
         <Route>
-          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-            <h1 className="font-title text-4xl text-burgundy mb-4">Page Introuvable</h1>
-            <p className="italic text-lg">Cette page semble s'être perdue dans les méandres du temps.</p>
+          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-6">
+            <h1 className="font-title text-4xl text-gold mb-4">Salle Introuvable</h1>
+            <p className="italic text-lg text-pearl font-serif">Cette pièce du château semble scellée magiquement.</p>
           </div>
         </Route>
       </Switch>

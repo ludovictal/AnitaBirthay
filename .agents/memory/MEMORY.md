@@ -1,0 +1,1 @@
+- [Design subagent output verification](design-subagent-verification.md) — always typecheck/restart after a design subagent job before trusting its "done" summary.
