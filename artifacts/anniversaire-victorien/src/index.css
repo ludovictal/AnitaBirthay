@@ -235,3 +235,43 @@ body {
   from { background-position: 0 0; }
   to { background-position: 0 500px; }
 }
+
+/* Birthday flourish: plays once on page arrival */
+.flourish-banner {
+  animation: flourish-banner-anim 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+@keyframes flourish-banner-anim {
+  0% { opacity: 0; transform: translate(-50%, -16px) scale(0.92); }
+  12% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  80% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -10px) scale(0.97); }
+}
+
+.flourish-sparkle {
+  font-size: 14px;
+  opacity: 0;
+  animation: flourish-sparkle-anim 1.4s ease-out forwards;
+  transform-origin: center;
+}
+@keyframes flourish-sparkle-anim {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(0) scale(0.4);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(140px) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flourish-banner,
+  .flourish-sparkle {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

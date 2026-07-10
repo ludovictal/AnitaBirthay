@@ -10,8 +10,15 @@ export default function Home() {
       <div className="max-w-3xl space-y-8 relative z-10 mt-8 mb-4">
         <div className="inline-block relative">
           <div className="absolute inset-0 bg-gold/20 blur-[60px] rounded-full"></div>
+          <div className="relative z-10 flex items-center justify-center gap-3 mb-3 animate-in fade-in zoom-in-95 duration-1000">
+            <span className="text-gold text-lg drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">✦</span>
+            <span className="font-title text-gold-light text-xs md:text-sm uppercase tracking-[0.5em] drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+              Joyeux
+            </span>
+            <span className="text-gold text-lg drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">✦</span>
+          </div>
           <h2 className="font-title text-5xl md:text-7xl text-pearl leading-tight drop-shadow-lg uppercase tracking-widest relative z-10">
-            <span className="text-gradient-gold block text-3xl md:text-4xl mb-6 tracking-[0.3em]">L'Anniversaire</span>
+            <span className="text-gradient-gold block text-3xl md:text-4xl mb-6 tracking-[0.3em] gold-glow">L'Anniversaire</span>
             <span className="block text-2xl md:text-3xl text-pearl/80 mb-2">de la Princesse</span>
           </h2>
         </div>

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'wouter';
 import { ReactNode } from 'react';
 import EasterEggs from './EasterEggs';
+import BirthdayFlourish from './BirthdayFlourish';
 
 const navItems = [
   { path: '/', label: 'Le Blason' },
@@ -17,12 +18,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="min-h-[100dvh] relative overflow-hidden flex flex-col md:flex-row bg-background">
       <div className="particles-overlay"></div>
 
-      {/* Global Birthday Indicator */}
-      <div className="fixed top-0 right-0 z-50 pointer-events-none overflow-hidden w-40 h-40">
-        <div className="absolute top-8 -right-8 w-60 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-sapphire-dark font-title text-xs uppercase tracking-[0.3em] py-2 text-center transform rotate-45 shadow-[0_0_20px_rgba(255,215,0,0.5)] border-y border-sapphire/20 font-bold">
-          Joyeux Anniversaire
-        </div>
-      </div>
+      {location !== '/' && <BirthdayFlourish key={location} />}
 
       {/* Navigation / Sidebar Couture */}
       <nav className="md:w-80 border-b md:border-b-0 md:border-r border-gold/20 flex-shrink-0 z-20 relative bg-sapphire-dark/80 backdrop-blur-xl shadow-[6px_0_30px_rgba(0,0,0,0.5)] pt-8 pb-4 md:py-16 flex flex-col justify-between">
