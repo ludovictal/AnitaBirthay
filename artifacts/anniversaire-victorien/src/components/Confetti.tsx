@@ -1,25 +1,56 @@
 import { useMemo } from 'react';
 
-const COLORS = ['hsl(45,85%,60%)', 'hsl(222,65%,45%)', 'hsl(275,55%,65%)', 'hsl(210,20%,96%)'];
+// Rich festive palette: gold, sapphire, amethyst, rose, emerald, pearl
+const COLORS = [
+  'hsl(45,90%,62%)',   // gold
+  'hsl(48,100%,75%)',  // gold-light
+  'hsl(222,65%,55%)',  // sapphire
+  'hsl(275,60%,70%)',  // amethyst
+  'hsl(340,75%,65%)',  // rose / festive pink
+  'hsl(160,55%,55%)',  // emerald
+  'hsl(210,20%,96%)',  // pearl
+  'hsl(30,90%,60%)',   // amber
+];
+
+// Shape classes: rect, square, circle, long-strip, diamond
+type Shape = 'rect' | 'square' | 'circle' | 'strip' | 'diamond';
+const SHAPES: Shape[] = ['rect', 'square', 'circle', 'strip', 'diamond'];
+
+interface Piece {
+  id: number;
+  left: number;
+  delay: number;
+  duration: number;
+  color: string;
+  rotate: number;
+  drift: number;
+  size: number;
+  shape: Shape;
+  sway: number;
+  opacity: number;
+}
 
 /**
- * An elegant, confined confetti burst — not a full-screen storm.
- * Remount with a changing `burstKey` to replay it. Purely decorative.
+ * Full-page festive confetti — fixed overlay covering the whole viewport.
+ * Remount with a changing `burstKey` to replay. Purely decorative.
  */
 export default function Confetti({ burstKey }: { burstKey: number }) {
-  const pieces = useMemo(
+  const pieces: Piece[] = useMemo(
     () =>
-      Array.from({ length: 36 }, (_, i) => ({
+      Array.from({ length: 90 }, (_, i) => ({
         id: i,
-        left: 5 + Math.random() * 90,
-        delay: Math.random() * 0.5,
-        duration: 2.2 + Math.random() * 1.4,
-        color: COLORS[i % COLORS.length],
-        rotate: Math.random() * 360,
-        drift: (Math.random() - 0.5) * 80,
-        size: 6 + Math.random() * 5,
+        left: Math.random() * 100,
+        delay: Math.random() * 1.8,
+        duration: 3.5 + Math.random() * 2.5,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        rotate: Math.random() * 720 - 360,
+        drift: (Math.random() - 0.5) * 160,
+        size: 7 + Math.random() * 9,
+        shape: SHAPES[Math.floor(Math.random() * SHAPES.length)],
+        sway: (Math.random() - 0.5) * 40,
+        opacity: 0.75 + Math.random() * 0.25,
       })),
-    [burstKey]
+    [burstKey],
   );
 
   if (burstKey === 0) return null;
@@ -27,27 +58,72 @@ export default function Confetti({ burstKey }: { burstKey: number }) {
   return (
     <div
       key={burstKey}
-      className="pointer-events-none absolute inset-0 overflow-hidden z-20"
+      className="confetti-fullpage pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
       aria-hidden="true"
     >
-      {pieces.map((p) => (
-        <span
-          key={p.id}
-          className="confetti-piece absolute top-0 rounded-[1px]"
-          style={
-            {
-              left: `${p.left}%`,
+      {pieces.map((p) => {
+        const base: React.CSSProperties = {
+          left: `${p.left}%`,
+          backgroundColor: p.color,
+          animationDelay: `${p.delay}s`,
+          animationDuration: `${p.duration}s`,
+          '--drift': `${p.drift}px`,
+          '--rotate': `${p.rotate}deg`,
+          '--sway': `${p.sway}px`,
+          opacity: p.opacity,
+        } as React.CSSProperties;
+
+        if (p.shape === 'rect') {
+          return (
+            <span
+              key={p.id}
+              className="confetti-piece absolute top-0"
+              style={{ ...base, width: p.size, height: p.size * 0.45, borderRadius: 2 }}
+            />
+          );
+        }
+        if (p.shape === 'square') {
+          return (
+            <span
+              key={p.id}
+              className="confetti-piece absolute top-0"
+              style={{ ...base, width: p.size, height: p.size, borderRadius: 2 }}
+            />
+          );
+        }
+        if (p.shape === 'circle') {
+          return (
+            <span
+              key={p.id}
+              className="confetti-piece absolute top-0"
+              style={{ ...base, width: p.size, height: p.size, borderRadius: '50%' }}
+            />
+          );
+        }
+        if (p.shape === 'strip') {
+          return (
+            <span
+              key={p.id}
+              className="confetti-piece absolute top-0"
+              style={{ ...base, width: p.size * 0.3, height: p.size * 1.8, borderRadius: 1 }}
+            />
+          );
+        }
+        // diamond
+        return (
+          <span
+            key={p.id}
+            className="confetti-piece absolute top-0"
+            style={{
+              ...base,
               width: p.size,
-              height: p.size * 0.4,
-              backgroundColor: p.color,
-              animationDelay: `${p.delay}s`,
-              animationDuration: `${p.duration}s`,
-              '--drift': `${p.drift}px`,
-              '--rotate': `${p.rotate}deg`,
-            } as React.CSSProperties
-          }
-        />
-      ))}
+              height: p.size,
+              borderRadius: 2,
+              transform: 'rotate(45deg)',
+            }}
+          />
+        );
+      })}
     </div>
   );
 }

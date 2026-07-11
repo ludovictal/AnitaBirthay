@@ -11,36 +11,57 @@ export default function Home() {
       <div className="max-w-3xl space-y-8 relative z-10 mt-8 mb-4">
         <div className="inline-block relative">
           <div className="absolute inset-0 bg-gold/20 blur-[60px] rounded-full"></div>
-          <div className="relative z-10 flex items-center justify-center gap-3 mb-3 animate-in fade-in zoom-in-95 duration-1000">
-            <span className="text-gold text-lg drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">✦</span>
-            <span className="font-title text-gold-light text-xs md:text-sm uppercase tracking-[0.5em] drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
-              Joyeux
-            </span>
-            <span className="text-gold text-lg drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">✦</span>
+          {/* ═══ JOYEUX ANNIVERSAIRE — main title, full-width & proud ═══ */}
+          <div className="relative z-10 animate-in fade-in zoom-in-95 duration-1000 w-full">
+            {/* Top ornament line */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gold/60"></div>
+              <span className="text-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">✦</span>
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gold/60"></div>
+            </div>
+
+            <h2 className="font-title leading-none uppercase relative z-10">
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] [text-shadow:0_0_40px_rgba(255,215,0,0.35),0_2px_0_rgba(0,0,0,0.4)] text-gradient-gold">
+                Joyeux
+              </span>
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] mt-1 [text-shadow:0_0_40px_rgba(255,215,0,0.35),0_2px_0_rgba(0,0,0,0.4)] text-gradient-gold">
+                Anniversaire
+              </span>
+            </h2>
+
+            {/* Bottom ornament line */}
+            <div className="flex items-center gap-3 mt-5 mb-7">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gold/60"></div>
+              <span className="text-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">✦</span>
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gold/60"></div>
+            </div>
+
+            {/* Crown + name */}
+            <div className="flex flex-col items-center gap-2">
+              <svg
+                width="44"
+                height="34"
+                viewBox="0 0 64 48"
+                fill="none"
+                aria-hidden="true"
+                className="crown-drop block stroke-gold"
+                style={{ animationDelay: '0.4s' }}
+              >
+                <path
+                  d="M6 40 L2 16 L18 28 L32 8 L46 28 L62 16 L58 40 Z"
+                  fill="hsl(var(--gold)/0.15)"
+                  strokeWidth="2.5"
+                  strokeLinejoin="round"
+                />
+                <circle cx="2" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
+                <circle cx="32" cy="6" r="3" fill="hsl(var(--gold))" stroke="none" />
+                <circle cx="62" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
+              </svg>
+              <span className="font-title text-3xl md:text-4xl text-pearl/90 tracking-[0.25em] uppercase drop-shadow-lg">
+                Princesse <span className="text-gold drop-shadow-[0_0_12px_rgba(255,215,0,0.6)]">ANITA</span>
+              </span>
+            </div>
           </div>
-          <h2 className="font-title text-5xl md:text-7xl text-pearl leading-tight drop-shadow-lg uppercase tracking-widest relative z-10">
-            <span className="text-gradient-gold block text-3xl md:text-4xl mb-6 tracking-[0.3em] gold-glow">L'Anniversaire</span>
-            <svg
-              width="40"
-              height="30"
-              viewBox="0 0 64 48"
-              fill="none"
-              aria-hidden="true"
-              className="crown-drop mx-auto mb-2 block stroke-gold"
-              style={{ animationDelay: '0.4s' }}
-            >
-              <path
-                d="M6 40 L2 16 L18 28 L32 8 L46 28 L62 16 L58 40 Z"
-                fill="hsl(var(--gold)/0.15)"
-                strokeWidth="2.5"
-                strokeLinejoin="round"
-              />
-              <circle cx="2" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
-              <circle cx="32" cy="6" r="3" fill="hsl(var(--gold))" stroke="none" />
-              <circle cx="62" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
-            </svg>
-            <span className="block text-2xl md:text-3xl text-pearl/80 mb-2">de la Princesse</span>
-          </h2>
         </div>
         
         <div className="relative">
@@ -49,7 +70,7 @@ export default function Home() {
           </div>
           <div className="inline-block px-12 py-4 bg-sapphire-dark relative z-10 border border-gold/30 rounded-sm shadow-[0_0_30px_rgba(255,215,0,0.15)]">
             <span className="font-title text-6xl md:text-8xl text-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
-              20 ANS
+              18 ANS
             </span>
           </div>
         </div>

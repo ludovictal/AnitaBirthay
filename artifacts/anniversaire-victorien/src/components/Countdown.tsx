@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Confetti from './Confetti';
 
-// 20th birthday — kept in sync with the "20 ANS" milestone on the home page.
+// 18th birthday — kept in sync with the "18 ANS" milestone on the home page.
 const TARGET_DATE = new Date('2026-07-17T00:00:00');
 
 function getRemaining() {
