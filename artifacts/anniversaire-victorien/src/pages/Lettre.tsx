@@ -82,7 +82,7 @@ export default function Lettre() {
 
                 <button 
                   type="submit"
-                  className={`relative overflow-hidden font-title text-sm uppercase tracking-widest bg-gold text-sapphire-dark px-8 py-4 hover:bg-gold-light transition-all duration-500 shadow-[0_0_15px_rgba(255,215,0,0.2)] hover:shadow-[0_0_25px_rgba(255,215,0,0.5)] cursor-pointer ${isSealing ? 'animate-sparkle pointer-events-none' : ''}`}
+                  className={`relative overflow-hidden font-title text-xs sm:text-sm uppercase tracking-wider sm:tracking-widest bg-gold text-sapphire-dark px-5 sm:px-8 py-3 sm:py-4 hover:bg-gold-light transition-all duration-500 shadow-[0_0_15px_rgba(255,215,0,0.2)] hover:shadow-[0_0_25px_rgba(255,215,0,0.5)] cursor-pointer ${isSealing ? 'animate-sparkle pointer-events-none' : ''}`}
                 >
                   <span className="relative z-10">Déverrouiller le Sceau</span>
                 </button>
@@ -117,7 +117,7 @@ export default function Lettre() {
           )}
         </div>
       ) : (
-        <div className="w-full max-w-3xl mx-auto bg-[#fdfbf7] p-10 md:p-20 shadow-[0_0_60px_rgba(255,215,0,0.3)] animate-in zoom-in-95 duration-1000 relative text-[#1a1512] book-page-turn-right origin-left">
+        <div className="w-full max-w-3xl mx-auto bg-[#fdfbf7] p-6 sm:p-10 md:p-20 shadow-[0_0_60px_rgba(255,215,0,0.3)] animate-in zoom-in-95 duration-1000 relative text-[#1a1512] book-page-turn-right origin-left">
           
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none"></div>
           
@@ -129,8 +129,8 @@ export default function Lettre() {
             [Lieu. Ex: Depuis l'aile Ouest]
           </div>
 
-          <div className="space-y-8 font-serif text-2xl leading-loose relative z-10 text-center">
-            <p className="font-title text-4xl text-[#3a2f26] mb-12 uppercase tracking-widest border-b border-[#e6dcc6] pb-6 inline-block">
+          <div className="space-y-6 sm:space-y-8 font-serif text-lg sm:text-2xl leading-loose relative z-10 text-center">
+            <p className="font-title text-2xl sm:text-4xl text-[#3a2f26] mb-8 sm:mb-12 uppercase tracking-widest border-b border-[#e6dcc6] pb-4 sm:pb-6 inline-block">
               À ma Reine,
             </p>
             

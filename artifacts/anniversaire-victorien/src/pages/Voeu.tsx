@@ -128,11 +128,11 @@ export default function Voeu() {
           </div>
         </form>
       ) : (
-        <div className="text-center gem-border bg-sapphire/80 p-16 shadow-[0_0_50px_rgba(255,215,0,0.2)] relative animate-in zoom-in-95 duration-700 backdrop-blur-xl">
+        <div className="text-center gem-border bg-sapphire/80 p-8 sm:p-16 shadow-[0_0_50px_rgba(255,215,0,0.2)] relative animate-in zoom-in-95 duration-700 backdrop-blur-xl">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.3)_0,transparent_50%)]"></div>
           
-          <div className="font-title text-5xl text-gold mb-8 uppercase tracking-widest drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">Vœu Exaucé.</div>
-          <p className="text-2xl italic text-pearl/90 leading-relaxed font-serif relative z-10 drop-shadow-md">
+          <div className="font-title text-3xl sm:text-5xl text-gold mb-6 sm:mb-8 uppercase tracking-widest drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">Vœu Exaucé.</div>
+          <p className="text-lg sm:text-2xl italic text-pearl/90 leading-relaxed font-serif relative z-10 drop-shadow-md">
             Vos mots ont été tissés dans la soie du Grimoire. Ils y brilleront pour toujours.
           </p>
           

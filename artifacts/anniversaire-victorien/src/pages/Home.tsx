@@ -21,10 +21,10 @@ export default function Home() {
             </div>
 
             <h2 className="font-title leading-none uppercase relative z-10">
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] [text-shadow:0_0_40px_rgba(255,215,0,0.35),0_2px_0_rgba(0,0,0,0.4)] text-gradient-gold">
+              <span className="block text-[2.1rem] sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.15em] [text-shadow:0_0_40px_rgba(255,215,0,0.35),0_2px_0_rgba(0,0,0,0.4)] text-gradient-gold">
                 Joyeux
               </span>
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.18em] mt-1 [text-shadow:0_0_40px_rgba(255,215,0,0.35),0_2px_0_rgba(0,0,0,0.4)] text-gradient-gold">
+              <span className="block text-[2.1rem] sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.15em] mt-1 [text-shadow:0_0_40px_rgba(255,215,0,0.35),0_2px_0_rgba(0,0,0,0.4)] text-gradient-gold">
                 Anniversaire
               </span>
             </h2>
@@ -57,19 +57,19 @@ export default function Home() {
                 <circle cx="32" cy="6" r="3" fill="hsl(var(--gold))" stroke="none" />
                 <circle cx="62" cy="14" r="3" fill="hsl(var(--gold))" stroke="none" />
               </svg>
-              <span className="font-title text-3xl md:text-4xl text-pearl/90 tracking-[0.25em] uppercase drop-shadow-lg">
+              <span className="font-title text-2xl sm:text-3xl md:text-4xl text-pearl/90 tracking-[0.2em] uppercase drop-shadow-lg">
                 Princesse <span className="text-gold drop-shadow-[0_0_12px_rgba(255,215,0,0.6)]">ANITA</span>
               </span>
             </div>
           </div>
         </div>
         
-        <div className="relative">
+        <div className="relative w-full">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[120%] h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
           </div>
-          <div className="inline-block px-12 py-4 bg-sapphire-dark relative z-10 border border-gold/30 rounded-sm shadow-[0_0_30px_rgba(255,215,0,0.15)]">
-            <span className="font-title text-6xl md:text-8xl text-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
+          <div className="inline-block px-8 sm:px-12 py-3 sm:py-4 bg-sapphire-dark relative z-10 border border-gold/30 rounded-sm shadow-[0_0_30px_rgba(255,215,0,0.15)]">
+            <span className="font-title text-5xl sm:text-6xl md:text-8xl text-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
               18 ANS
             </span>
           </div>
@@ -81,7 +81,7 @@ export default function Home() {
           <div className="h-[1px] w-16 bg-gold/50"></div>
         </div>
 
-        <p className="text-2xl leading-relaxed text-pearl/90 font-serif italic max-w-2xl mx-auto drop-shadow-md">
+        <p className="text-lg sm:text-2xl leading-relaxed text-pearl/90 font-serif italic max-w-2xl mx-auto drop-shadow-md">
           Les portes du bal s'ouvrent sur une nuit qui t'appartient, parée de soie, de mystère et d'étoiles dorées.
         </p>
 

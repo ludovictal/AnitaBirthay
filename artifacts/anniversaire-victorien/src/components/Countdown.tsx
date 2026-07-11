@@ -16,10 +16,10 @@ function getRemaining() {
 
 function Unit({ value, label, pulseKey }: { value: number; label: string; pulseKey?: number }) {
   return (
-    <div className="flex flex-col items-center gap-1 min-w-[3.5rem]">
+    <div className="flex flex-col items-center gap-1 min-w-[2.5rem] sm:min-w-[3.5rem]">
       <span
         key={pulseKey}
-        className="font-title text-3xl md:text-5xl text-gold drop-shadow-[0_0_12px_rgba(255,215,0,0.5)] countdown-digit"
+        className="font-title text-2xl sm:text-3xl md:text-5xl text-gold drop-shadow-[0_0_12px_rgba(255,215,0,0.5)] countdown-digit"
       >
         {String(value).padStart(2, '0')}
       </span>

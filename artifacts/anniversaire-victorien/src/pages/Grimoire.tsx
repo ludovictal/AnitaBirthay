@@ -31,16 +31,16 @@ export default function Grimoire() {
             <div className="absolute bottom-2 left-2 w-6 h-6 border-b border-l border-gold/40"></div>
             <div className="absolute bottom-2 right-2 w-6 h-6 border-b border-r border-gold/40"></div>
 
-            <div className="flex justify-between items-end mb-8 border-b border-gold/20 pb-4">
-              <span className="text-sm font-title tracking-widest text-pearl uppercase opacity-60">
+            <div className="flex flex-wrap justify-between items-start gap-2 mb-8 border-b border-gold/20 pb-4">
+              <span className="text-xs sm:text-sm font-title tracking-widest text-pearl uppercase opacity-60 leading-snug">
                 {memory.date}
               </span>
-              <span className="text-gold opacity-80 font-title text-xs tracking-widest uppercase">
+              <span className="text-gold opacity-80 font-title text-xs tracking-widest uppercase shrink-0">
                 Fragment {memories.length - index}
               </span>
             </div>
             
-            <div className="text-xl md:text-2xl leading-relaxed text-pearl/90 font-serif italic text-center md:text-left">
+            <div className="text-lg sm:text-xl md:text-2xl leading-relaxed text-pearl/90 font-serif italic text-center md:text-left">
               "{memory.content}"
             </div>
             
