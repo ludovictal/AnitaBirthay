@@ -37,8 +37,15 @@ export default function Voeu() {
       )}
 
       <header className="text-center mb-16">
-        <h2 className="font-title text-4xl md:text-5xl text-pearl mb-6 drop-shadow-sm uppercase tracking-widest text-gradient-gold">
-          Le Vœu de la Tiare
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="text-gold text-lg drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">✦</span>
+          <span className="font-title text-gold-light text-xs md:text-sm uppercase tracking-[0.5em] drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+            Titre
+          </span>
+          <span className="text-gold text-lg drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">✦</span>
+        </div>
+        <h2 className="font-title text-4xl md:text-5xl mb-6 uppercase tracking-widest">
+          <span className="text-gradient-gold [text-shadow:0_2px_24px_rgba(255,215,0,0.25)]">Le Vœu de la Tiare</span>
         </h2>
         <div className="flex items-center justify-center gap-4 mb-6">
           <div className="h-[1px] w-20 bg-gold/50"></div>

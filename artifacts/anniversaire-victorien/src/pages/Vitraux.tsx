@@ -67,8 +67,8 @@ export default function Vitraux() {
   return (
     <div className="space-y-16 py-8 animate-in zoom-in-[0.98] duration-1000">
       <header className="text-center mb-16 relative">
-        <h2 className="font-title text-4xl md:text-5xl text-pearl mb-4 drop-shadow-sm uppercase tracking-widest text-gradient-gold">
-          Les Vitraux
+        <h2 className="font-title text-4xl md:text-5xl mb-4 drop-shadow-sm uppercase tracking-widest">
+          <span className="text-gradient-gold">Les Vitraux</span>
         </h2>
         <div className="flex items-center justify-center gap-4 mb-6">
           <div className="h-[1px] w-16 bg-emerald/50"></div>

@@ -10,23 +10,21 @@ function Router() {
   const [location] = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
   const [transitionStage, setTransitionStage] = useState('enter');
-  const [curtainClosed, setCurtainClosed] = useState(false);
+
+  // The curtain is derived directly from the transition stage instead of
+  // tracked as separate state — a single source of truth means there is no
+  // window where a stale timer/animation-frame from a previous navigation
+  // can leave the curtain stuck closed after rapid back-to-back clicks.
+  const curtainClosed = transitionStage === 'exit';
 
   useEffect(() => {
     if (location !== displayLocation) {
       setTransitionStage('exit');
-      setCurtainClosed(true);
-      let raf = 0;
       const timer = setTimeout(() => {
         setDisplayLocation(location);
         setTransitionStage('enter');
-        // Let the closed curtain sit a beat over the swapped content, then rise.
-        raf = requestAnimationFrame(() => setCurtainClosed(false));
       }, 800); // match page-exit-active + curtain-close duration
-      return () => {
-        clearTimeout(timer);
-        cancelAnimationFrame(raf);
-      };
+      return () => clearTimeout(timer);
     }
     return undefined;
   }, [location, displayLocation]);

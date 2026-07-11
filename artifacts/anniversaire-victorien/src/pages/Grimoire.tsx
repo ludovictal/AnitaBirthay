@@ -6,8 +6,8 @@ export default function Grimoire() {
   return (
     <div className="space-y-16 py-8 animate-in slide-in-from-bottom-10 fade-in duration-1000">
       <header className="text-center mb-16 relative">
-        <h2 className="font-title text-4xl md:text-5xl text-pearl mb-6 drop-shadow-sm uppercase tracking-widest text-gradient-gold">
-          Le Grimoire
+        <h2 className="font-title text-4xl md:text-5xl mb-6 drop-shadow-sm uppercase tracking-widest">
+          <span className="text-gradient-gold">Le Grimoire</span>
         </h2>
         <div className="flex items-center justify-center gap-4">
           <div className="h-[1px] w-16 bg-gold/50"></div>
@@ -15,7 +15,7 @@ export default function Grimoire() {
           <div className="h-[1px] w-16 bg-gold/50"></div>
         </div>
         <p className="mt-6 italic text-xl text-pearl/70 max-w-lg mx-auto font-serif">
-          [Intro du grimoire : "Les voix de ceux qui vous entourent, tissées de fil d'or sur les pages de l'histoire."]
+          Les voix de ceux qui vous entourent, tissées de fil d'or sur les pages de l'histoire.
         </p>
       </header>
 

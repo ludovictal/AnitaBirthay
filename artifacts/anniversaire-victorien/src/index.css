@@ -132,6 +132,8 @@ body {
 .text-gradient-gold {
   background: linear-gradient(to right, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-light)));
   -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
