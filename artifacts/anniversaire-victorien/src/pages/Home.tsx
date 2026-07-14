@@ -70,7 +70,7 @@ export default function Home() {
           </div>
           <div className="inline-block px-8 sm:px-12 py-3 sm:py-4 bg-sapphire-dark relative z-10 border border-gold/30 rounded-sm shadow-[0_0_30px_rgba(255,215,0,0.15)]">
             <span className="font-title text-5xl sm:text-6xl md:text-8xl text-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
-              18 ANS
+              19 ANS
             </span>
           </div>
         </div>
