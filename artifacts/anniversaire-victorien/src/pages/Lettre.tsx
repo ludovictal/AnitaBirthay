@@ -9,7 +9,7 @@ export default function Lettre() {
 
   const handleVerifyCode = (e: React.FormEvent) => {
     e.preventDefault();
-    if (code === '01022022') {
+    if (code === '17072024') {
       setError('');
       setIsSealing(true);
       setTimeout(() => {
@@ -125,27 +125,43 @@ export default function Lettre() {
           <div className="absolute inset-6 border border-[#e6dcc6] pointer-events-none"></div>
           
           <div className="text-right font-serif text-lg mb-16 text-[#8b7355] italic relative z-10">
-            [Date de la lettre. Ex: La nuit du bal,]<br/>
-            [Lieu. Ex: Depuis l'aile Ouest]
+            Depuis ici, là où tu n'es pas,<br/>
+            et où mon cœur t'attend quand même.
           </div>
 
           <div className="space-y-6 sm:space-y-8 font-serif text-lg sm:text-2xl leading-loose relative z-10 text-center">
             <p className="font-title text-2xl sm:text-4xl text-[#3a2f26] mb-8 sm:mb-12 uppercase tracking-widest border-b border-[#e6dcc6] pb-4 sm:pb-6 inline-block">
               À ma Reine,
             </p>
-            
+
             <p>
-              L'orchestre joue et les invités dansent, mais au milieu de cette cour fastueuse, je ne vois que toi.
+              Il y a des kilomètres entre nous. Des fuseaux horaires. Des silences qui s'étirent trop longtemps. Des écrans qui essaient de remplacer ta présence, et qui n'y arrivent jamais vraiment.
             </p>
-            
+
             <p>
-              Chaque détail de ta parure est un éloge à la beauté, mais aucune soie, aucun saphir ne saurait égaler la grâce avec laquelle tu traverses la vie.
+              Et pourtant, chaque matin, je me lève en pensant à toi. Chaque soir, je m'endors avec ton nom quelque part dans ma tête, comme une prière douce qu'on ne dit pas à voix haute.
             </p>
-            
+
             <p>
-              Que cette nuit te célèbre comme tu le mérites. Joyeux anniversaire, mon amour.
+              La distance me fait mal, oui. Elle me vole tes bras, ton rire tout près, la chaleur d'une main dans la mienne. Elle me laisse avec des souvenirs trop courts et des « je t'aime » tapés trop vite, parce que les mots ne suffisent jamais assez.
             </p>
-            
+
+            <p>
+              Mais sache ceci, ma chérie : rien, ni l'espace, ni le temps, ni les jours sans toi, ne diminue ce que je ressens. Mon amour pour toi n'est pas une chose fragile qui s'efface avec les kilomètres. C'est une constance. Une promesse. Un feu que j'entretiens même quand tout me paraît loin.
+            </p>
+
+            <p>
+              Je t'aime dans les messages. Je t'aime dans l'attente. Je t'aime dans les appels trop courts et dans les nuits où j'aurais donné n'importe quoi pour être simplement à côté de toi.
+            </p>
+
+            <p>
+              Un jour, ces espaces se refermeront. En attendant, je reste là, fidèle, présent, et profondément à toi, malgré la distance, malgré tout.
+            </p>
+
+            <p>
+              Joyeux anniversaire, mon amour. Tu mérites d'être célébrée, même à distance. Surtout à distance.
+            </p>
+
             <div className="mt-20 pt-12 text-center">
               <span className="block text-[#8b7355] text-sm uppercase tracking-widest font-title mb-4">
                 Pour l'éternité,

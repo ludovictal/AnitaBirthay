@@ -16,9 +16,9 @@ export default function Vitraux() {
       accent: 'amethyst',
       sparkleClass: 'theme-sparkle-purple',
       images: [
-        '/album-robe-1.jpg', '/album-robe-2.jpg', '/album-robe-1.jpg', '/album-robe-2.jpg',
-        '/album-robe-1.jpg', '/album-robe-2.jpg', '/album-robe-1.jpg', '/album-robe-2.jpg',
-        '/album-robe-1.jpg', '/album-robe-2.jpg', '/album-robe-1.jpg', '/album-robe-2.jpg'
+        '/album-robe-1.jpg', '/album-robe-2.jpg', '/album-robe-3.jpg', '/album-robe-4.jpg',
+        '/album-robe-5.jpg', '/album-robe-6.jpg', '/album-robe-7.jpg', '/album-robe-8.jpg',
+        '/album-robe-9.jpg', '/album-robe-10.jpg', '/album-robe-11.jpg', '/album-robe-12.jpg',
       ]
     },
     { 
@@ -29,7 +29,11 @@ export default function Vitraux() {
       title: 'Lumières Célestes',
       accent: 'gold',
       sparkleClass: 'theme-sparkle-gold',
-      images: Array(12).fill('/album-vitrail-1.jpg')
+      images: [
+        '/album-vitrail-1.jpg', '/album-vitrail-2.jpg', '/album-vitrail-3.jpg', '/album-vitrail-4.jpg',
+        '/album-vitrail-5.jpg', '/album-vitrail-6.jpg', '/album-vitrail-7.jpg', '/album-vitrail-8.jpg',
+        '/album-vitrail-9.jpg', '/album-vitrail-10.jpg', '/album-vitrail-11.jpg', '/album-vitrail-12.jpg',
+      ]
     },
     { 
       id: 3, 
@@ -56,7 +60,11 @@ export default function Vitraux() {
       title: 'Héritage Royal',
       accent: 'gold-light',
       sparkleClass: 'theme-sparkle-diamond',
-      images: Array(12).fill('/album-tiare-1.jpg')
+      images: [
+        '/album-tiare-1.jpg', '/album-tiare-2.jpg', '/album-tiare-3.jpg', '/album-tiare-4.jpg',
+        '/album-tiare-5.jpg', '/album-tiare-6.jpg', '/album-tiare-7.jpg', '/album-tiare-8.jpg',
+        '/album-tiare-9.jpg', '/album-tiare-10.jpg', '/album-tiare-11.jpg', '/album-tiare-12.jpg',
+      ]
     },
     { 
       id: 5, 
@@ -66,7 +74,11 @@ export default function Vitraux() {
       title: 'Sceaux et Serments',
       accent: 'red-900', // mapped to a bordeaux feel via CSS
       sparkleClass: 'theme-sparkle-crimson',
-      images: Array(12).fill('/album-sceau-1.jpg')
+      images: [
+        '/album-sceau-1.jpg', '/album-sceau-2.jpg', '/album-sceau-3.jpg', '/album-sceau-4.jpg',
+        '/album-sceau-5.jpg', '/album-sceau-6.jpg', '/album-sceau-7.jpg', '/album-sceau-8.jpg',
+        '/album-sceau-9.jpg', '/album-sceau-10.jpg', '/album-sceau-11.jpg', '/album-sceau-12.jpg',
+      ]
     },
   ];
 
@@ -84,7 +96,7 @@ export default function Vitraux() {
           <div className="h-[1px] w-16 bg-emerald/50"></div>
         </div>
         <p className="italic text-xl text-pearl/70 max-w-xl mx-auto font-serif">
-          Cliquez sur un vitrail pour ouvrir l'album de ses souvenirs et découvrir les 12 toiles qui le composent.
+          Cliquez sur un vitrail pour ouvrir l'album de ses souvenirs et découvrir les photos qui le composent.
         </p>
       </header>
 
