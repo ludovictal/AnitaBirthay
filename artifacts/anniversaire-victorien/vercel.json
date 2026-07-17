@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "cd ../.. && pnpm install",
-  "buildCommand": "PORT=3000 BASE_PATH=/ pnpm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "PORT=3000 BASE_PATH=/ pnpm run build && cp -r dist/. public/",
+  "outputDirectory": "public",
   "framework": null,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
