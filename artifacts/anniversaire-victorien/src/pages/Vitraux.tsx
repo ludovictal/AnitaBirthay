@@ -34,13 +34,19 @@ export default function Vitraux() {
     { 
       id: 3, 
       span: 'col-span-6 md:col-span-4 row-span-1', 
-      src: '/album-cadre-1.jpg', 
+      src: '/album-joyau-1.jpg', 
       caption: 'Précieux joyau',
       title: 'Joyaux de la Couronne',
       accent: 'emerald',
       sparkleClass: 'theme-sparkle-emerald',
       hasEasterEgg: true,
-      images: Array(12).fill('/album-cadre-1.jpg')
+      // ponytail: flat list of WhatsApp photos; no gallery CMS
+      images: [
+        '/album-joyau-1.jpg', '/album-joyau-2.jpg', '/album-joyau-3.jpg', '/album-joyau-4.jpg',
+        '/album-joyau-5.jpg', '/album-joyau-6.jpg', '/album-joyau-7.jpg', '/album-joyau-8.jpg',
+        '/album-joyau-9.jpg', '/album-joyau-10.jpg', '/album-joyau-11.jpg', '/album-joyau-12.jpg',
+        '/album-joyau-13.jpg', '/album-joyau-14.jpg', '/album-joyau-15.jpg', '/album-joyau-16.jpg',
+      ]
     },
     { 
       id: 4, 

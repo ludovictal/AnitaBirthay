@@ -24,6 +24,35 @@ const ACCENT_STYLES: Record<string, { border: string; glow: string; text: string
   'red-900': { border: 'border-red-900/60', glow: 'shadow-[0_0_60px_rgba(231,76,60,0.35)]', text: 'text-red-400' },
 };
 
+const TURN_MS = 800;
+
+function PageFace({
+  src,
+  alt,
+}: {
+  src: string | undefined;
+  alt: string;
+}) {
+  return (
+    <div className="relative w-full h-full border border-gold/30 overflow-hidden bg-[#1a1512]">
+      {src ? (
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-pearl/30 font-serif italic text-sm">
+          [emplacement photo]
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
   const [pairIndex, setPairIndex] = useState(0);
   const [turning, setTurning] = useState<'next' | 'prev' | null>(null);
@@ -32,6 +61,7 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
+  const turnTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pageCount = theme.images.length;
   const pairCount = Math.ceil(pageCount / 2);
@@ -40,12 +70,13 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
   useEffect(() => {
     if (isOpen) {
       setPairIndex(0);
+      setTurning(null);
       setEasterEggRevealed(false);
       lastFocusedRef.current = document.activeElement as HTMLElement | null;
-      // Move focus into the dialog once it has mounted.
       const raf = requestAnimationFrame(() => closeButtonRef.current?.focus());
       return () => cancelAnimationFrame(raf);
     }
+    if (turnTimerRef.current) clearTimeout(turnTimerRef.current);
     if (lastFocusedRef.current) {
       lastFocusedRef.current.focus();
       lastFocusedRef.current = null;
@@ -56,19 +87,19 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
   const goNext = useCallback(() => {
     if (pairIndex >= pairCount - 1 || turning) return;
     setTurning('next');
-    setTimeout(() => {
+    turnTimerRef.current = setTimeout(() => {
       setPairIndex((p) => Math.min(p + 1, pairCount - 1));
       setTurning(null);
-    }, 600);
+    }, TURN_MS);
   }, [pairIndex, pairCount, turning]);
 
   const goPrev = useCallback(() => {
     if (pairIndex <= 0 || turning) return;
     setTurning('prev');
-    setTimeout(() => {
+    turnTimerRef.current = setTimeout(() => {
       setPairIndex((p) => Math.max(p - 1, 0));
       setTurning(null);
-    }, 600);
+    }, TURN_MS);
   }, [pairIndex, turning]);
 
   useEffect(() => {
@@ -105,8 +136,16 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
 
   if (!isOpen) return null;
 
-  const leftSrc = theme.images[pairIndex * 2];
-  const rightSrc = theme.images[pairIndex * 2 + 1];
+  const curLeft = theme.images[pairIndex * 2];
+  const curRight = theme.images[pairIndex * 2 + 1];
+  const nextLeft = theme.images[(pairIndex + 1) * 2];
+  const nextRight = theme.images[(pairIndex + 1) * 2 + 1];
+  const prevLeft = theme.images[(pairIndex - 1) * 2];
+  const prevRight = theme.images[(pairIndex - 1) * 2 + 1];
+
+  // During a turn, base spread already shows the destination underneath the flipping leaf.
+  const baseLeft = turning === 'next' ? curLeft : turning === 'prev' ? prevLeft : curLeft;
+  const baseRight = turning === 'next' ? nextRight : turning === 'prev' ? curRight : curRight;
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -144,7 +183,6 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Theme particle overlay */}
         <div className={`absolute -inset-6 pointer-events-none rounded-2xl ${theme.sparkleClass}`}></div>
 
         <header className="text-center mb-6 relative z-10">
@@ -156,51 +194,63 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
           </p>
         </header>
 
-        {/* The Book */}
         <div
-          className={`relative flex bg-gradient-to-b from-[#3a2a12] to-[#1c1207] border-4 ${accent.border} rounded-md shadow-2xl overflow-hidden`}
-          style={{ perspective: '2000px' }}
+          className={`book-stage relative aspect-[3/2] bg-gradient-to-b from-[#3a2a12] to-[#1c1207] border-4 ${accent.border} rounded-md shadow-2xl`}
         >
           {/* Spine */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-3 -translate-x-1/2 bg-black/40 z-20 shadow-[0_0_15px_rgba(0,0,0,0.6)]"></div>
+          <div className="absolute left-1/2 top-0 bottom-0 w-3 -translate-x-1/2 bg-black/40 z-30 shadow-[0_0_15px_rgba(0,0,0,0.6)] pointer-events-none" />
 
-          {[leftSrc, rightSrc].map((src, i) => (
-            <div
-              key={`${pairIndex}-${i}`}
-              className={`w-1/2 aspect-[3/4] relative bg-pearl/5 flex items-center justify-center p-3 md:p-6 ${
-                turning === 'next' ? 'animate-page-turn-next' : turning === 'prev' ? 'animate-page-turn-prev' : ''
+          {/* Base spread (destination peeks under the flipping leaf) */}
+          <div className="absolute inset-y-0 left-0 w-1/2 p-3 md:p-6">
+            <PageFace
+              src={baseLeft}
+              alt={`${theme.caption} — page ${
+                (turning === 'prev' ? pairIndex - 1 : pairIndex) * 2 + 1
               }`}
-            >
-              <div className="relative w-full h-full border border-gold/30 overflow-hidden">
-                {src ? (
-                  <img
-                    src={src}
-                    alt={`${theme.caption} — page ${pairIndex * 2 + i + 1}`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-pearl/30 font-serif italic text-sm">
-                    [emplacement photo]
-                  </div>
-                )}
-              </div>
+            />
+          </div>
+          <div className="absolute inset-y-0 right-0 w-1/2 p-3 md:p-6">
+            <PageFace
+              src={baseRight}
+              alt={`${theme.caption} — page ${
+                (turning === 'next' ? pairIndex + 1 : pairIndex) * 2 + 2
+              }`}
+            />
+            {theme.hasEasterEgg && pairIndex === 0 && !turning && (
+              <button
+                type="button"
+                onClick={() => setEasterEggRevealed((r) => !r)}
+                aria-expanded={easterEggRevealed}
+                aria-controls="vitrail-easter-egg"
+                aria-label="Facette scintillante, cliquez pour révéler un indice"
+                className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-emerald/60 border border-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold animate-halo"
+              />
+            )}
+          </div>
 
-              {/* Easter egg hidden in the 3rd theme's first right page */}
-              {theme.hasEasterEgg && i === 1 && pairIndex === 0 && (
-                <button
-                  type="button"
-                  onClick={() => setEasterEggRevealed((r) => !r)}
-                  aria-expanded={easterEggRevealed}
-                  aria-controls="vitrail-easter-egg"
-                  aria-label="Facette scintillante, cliquez pour révéler un indice"
-                  className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-emerald/60 border border-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold animate-halo"
-                />
-              )}
+          {/* Flipping leaf — next: right page turns left over the spine */}
+          {turning === 'next' && (
+            <div className="book-leaf book-leaf-right book-leaf-flip-next z-20">
+              <div className="book-leaf-face book-leaf-front p-3 md:p-6">
+                <PageFace src={curRight} alt={`${theme.caption} — page ${pairIndex * 2 + 2}`} />
+              </div>
+              <div className="book-leaf-face book-leaf-back p-3 md:p-6">
+                <PageFace src={nextLeft} alt={`${theme.caption} — page ${(pairIndex + 1) * 2 + 1}`} />
+              </div>
             </div>
-          ))}
+          )}
+
+          {/* Flipping leaf — prev: left page turns right over the spine */}
+          {turning === 'prev' && (
+            <div className="book-leaf book-leaf-left book-leaf-flip-prev z-20">
+              <div className="book-leaf-face book-leaf-front p-3 md:p-6">
+                <PageFace src={curLeft} alt={`${theme.caption} — page ${pairIndex * 2 + 1}`} />
+              </div>
+              <div className="book-leaf-face book-leaf-back p-3 md:p-6">
+                <PageFace src={prevRight} alt={`${theme.caption} — page ${(pairIndex - 1) * 2 + 2}`} />
+              </div>
+            </div>
+          )}
         </div>
 
         {theme.hasEasterEgg && (
@@ -218,12 +268,11 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
           </div>
         )}
 
-        {/* Navigation */}
         <div className="flex items-center justify-center gap-8 mt-6 relative z-10">
           <button
             type="button"
             onClick={goPrev}
-            disabled={pairIndex === 0}
+            disabled={pairIndex === 0 || !!turning}
             className="font-title text-sm uppercase tracking-widest text-pearl/70 hover:text-gold disabled:opacity-20 disabled:cursor-not-allowed border border-pearl/20 hover:border-gold px-5 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold transition-colors"
             aria-label="Page précédente"
           >
@@ -232,7 +281,7 @@ export default function BookModal({ isOpen, onClose, theme }: BookModalProps) {
           <button
             type="button"
             onClick={goNext}
-            disabled={pairIndex >= pairCount - 1}
+            disabled={pairIndex >= pairCount - 1 || !!turning}
             className="font-title text-sm uppercase tracking-widest text-pearl/70 hover:text-gold disabled:opacity-20 disabled:cursor-not-allowed border border-pearl/20 hover:border-gold px-5 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold transition-colors"
             aria-label="Page suivante"
           >

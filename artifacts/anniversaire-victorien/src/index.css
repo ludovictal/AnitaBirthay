@@ -200,19 +200,51 @@ body {
   to { opacity: 1; transform: perspective(2000px) scale(1) translateY(0) rotateX(0deg); }
 }
 
-@keyframes page-turn-next {
-  0% { transform: perspective(2000px) rotateY(0deg); opacity: 1; }
-  100% { transform: perspective(2000px) rotateY(-180deg); opacity: 0; }
+/* Real page-leaf flip around the spine */
+.book-stage {
+  perspective: 2200px;
+  transform-style: preserve-3d;
+  overflow: visible;
 }
-@keyframes page-turn-prev {
-  0% { transform: perspective(2000px) rotateY(0deg); opacity: 1; }
-  100% { transform: perspective(2000px) rotateY(180deg); opacity: 0; }
+.book-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
-.animate-page-turn-next {
-  animation: page-turn-next 0.6s ease-in-out forwards;
+.book-leaf-right {
+  right: 0;
+  transform-origin: left center;
 }
-.animate-page-turn-prev {
-  animation: page-turn-prev 0.6s ease-in-out forwards;
+.book-leaf-left {
+  left: 0;
+  transform-origin: right center;
+}
+.book-leaf-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: linear-gradient(to bottom, #3a2a12, #1c1207);
+}
+.book-leaf-back {
+  transform: rotateY(180deg);
+}
+.book-leaf-flip-next {
+  animation: book-leaf-next 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+.book-leaf-flip-prev {
+  animation: book-leaf-prev 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+@keyframes book-leaf-next {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(-180deg); }
+}
+@keyframes book-leaf-prev {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
 }
 
 .book-page-turn-right {
