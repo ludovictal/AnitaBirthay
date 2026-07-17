@@ -1,7 +1,7 @@
 import { useMemories } from '../hooks/use-memories';
 
 export default function Grimoire() {
-  const { memories } = useMemories();
+  const { memories, loading } = useMemories();
 
   return (
     <div className="space-y-16 py-8 animate-in slide-in-from-bottom-10 fade-in duration-1000">
@@ -19,6 +19,9 @@ export default function Grimoire() {
         </p>
       </header>
 
+      {loading ? (
+        <p className="text-center text-pearl/50 font-serif italic">Ouverture du grimoire…</p>
+      ) : (
       <div className="space-y-16 max-w-4xl mx-auto">
         {memories.map((memory, index) => (
           <article 
@@ -53,6 +56,7 @@ export default function Grimoire() {
           </article>
         ))}
       </div>
+      )}
     </div>
   );
 }

@@ -15,8 +15,8 @@ export default function Voeu() {
     if (author.trim() && content.trim()) {
       setIsCasting(true);
       // Let magical particles play before finalizing submission
-      setTimeout(() => {
-        addMemory(author, content);
+      setTimeout(async () => {
+        await addMemory(author, content);
         setSubmitted(true);
         setAuthor('');
         setContent('');
