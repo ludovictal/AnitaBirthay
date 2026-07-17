@@ -12,8 +12,9 @@ const DEFAULT_MEMORIES = [
 ];
 
 async function kv(command) {
-  const url = process.env.KV_REST_API_URL;
-  const token = process.env.KV_REST_API_TOKEN;
+  // Vercel KV (legacy) or Upstash Redis marketplace
+  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!url || !token) {
     throw new Error('KV_NOT_CONFIGURED');
   }
@@ -93,7 +94,7 @@ export default async function handler(req, res) {
     if (message === 'KV_NOT_CONFIGURED') {
       return res.status(503).json({
         error: 'KV_NOT_CONFIGURED',
-        hint: 'Créez une base Vercel KV (Storage) et reconnectez le projet.',
+        hint: 'Installez Upstash Redis via Vercel Marketplace (Storage) et reconnectez le projet.',
       });
     }
     console.error(err);
